@@ -1,0 +1,116 @@
+{
+  "name": "app-from-scratch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prod": "bnr prod-build && bnr prod-server",
+    "dev": "bnr dev-build && bnr dev-server",
+    "lint": "eslint .",
+    "test": "mocha --require './babel/babel-register.js' --require './utilities/tests/setup.js' 'src/client/**/*.spec.js'"
+  },
+  "betterScripts": {
+    "prod-build": {
+      "command": "node babel/babel-register --run webpack/build.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "prod-server": {
+      "command": "node babel/babel-register --run src/server/src/server.js --autostart",
+      "env": {
+        "NODE_ENV": "production",
+        "NODE_PATH": "./src"
+      }
+    },
+    "dev-build": {
+      "command": "node babel/babel-register --run webpack/build.js",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    "dev-server": {
+      "command": "node babel/babel-register --run webpack/dev-server.js",
+      "env": {
+        "NODE_ENV": "development",
+        "NODE_PATH": "./src"
+      }
+    }
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "asset-require-hook": "^1.2.0",
+    "assets-webpack-plugin": "^3.5.1",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-jest": "^21.2.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-inline-react-svg": "^0.5.2",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "better-npm-run": "^0.1.0",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "eslint": "^4.11.0",
+    "eslint-plugin-react": "^7.5.1",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.5",
+    "fs-extra": "^4.0.2",
+    "html-webpack-plugin": "^2.30.1",
+    "http-server": "^0.10.0",
+    "jsdom": "^11.5.1",
+    "nock": "^9.1.6",
+    "pre-commit": "^1.2.2",
+    "sinon-chai": "^2.14.0",
+    "webpack": "^3.8.1",
+    "webpack-vendor-chunk-plugin": "^1.0.0"
+  },
+  "dependencies": {
+    "autoprefixer": "^7.1.6",
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "chai": "^4.1.2",
+    "chai-enzyme": "^1.0.0-beta.0",
+    "clear-module": "^2.1.0",
+    "css-loader": "^0.28.7",
+    "css-modules-require-hook": "^4.2.2",
+    "cssnano": "^3.10.0",
+    "ejs": "^2.5.7",
+    "es6-promise": "^4.2.2",
+    "express": "^4.16.2",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "jsx-control-statements": "^3.2.8",
+    "mocha": "^4.0.1",
+    "node-sass": "^4.7.2",
+    "optimist": "^0.6.1",
+    "optimize-css-assets-webpack-plugin": "^3.2.0",
+    "postcss-loader": "^2.0.8",
+    "prop-types": "^15.6.0",
+    "raw-loader": "^0.5.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.1.0",
+    "react-redux": "^5.0.6",
+    "react-router-config": "^1.0.0-beta.4",
+    "react-router-dom": "^4.2.2",
+    "recompose": "^0.26.0",
+    "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-mock-store": "^1.3.0",
+    "redux-thunk": "^2.2.0",
+    "resolve-url-loader": "^2.2.0",
+    "sass-loader": "^6.0.6",
+    "save": "^2.3.1",
+    "save-dev": "^2.0.0",
+    "sinon": "^4.1.3",
+    "sinon-chai-in-order": "^0.1.0",
+    "style-loader": "^0.19.0",
+    "uglifyjs-webpack-plugin": "^1.1.0",
+    "universal-fetch": "^1.0.0",
+    "webpack-dev-middleware": "^1.12.0",
+    "webpack-hot-middleware": "^2.20.0"
+  }
+}

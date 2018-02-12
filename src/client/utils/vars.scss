@@ -1,0 +1,22 @@
+// Font-sizes
+$font-size-xs:   12px;
+$font-size-s:    14px;
+$font-size-m:    16px;
+$font-size-l:    20px;
+$font-size-xl:   22px;
+$font-size-xxl:  28px;
+$font-size-xxxl: 36px;
+$font-size-hero: 42px;
+
+// Universal variable for defining spacing
+$grid: 8px;
+
+// Breakpoints
+$int-breakpoint-mobile: 480;
+$int-breakpoint-tablet: 768;
+$int-breakpoint-desktop: 960;
+// + 0px workaround to keep value as a number
+// so we can do maths operations on them
+$breakpoint-mobile: $int-breakpoint-mobile + 0px;
+$breakpoint-tablet: $int-breakpoint-tablet + 0px;
+$breakpoint-desktop: $int-breakpoint-desktop + 0px;

@@ -1,0 +1,55 @@
+@import 'vars';
+
+// Breakpoint functionality
+// media-devices can be given in random order
+@mixin breakpoint($media) {
+  $offset: 1px;
+
+  // define minimum and maximum width for each device
+  $mobile-min : 0px;
+  $mobile-max : $breakpoint-mobile;
+
+  $tablet-min : $breakpoint-mobile + $offset;
+  $tablet-max : $breakpoint-tablet;
+
+  $desktop-min : $breakpoint-tablet + $offset;
+  $desktop-max : "none";
+
+  $min-width : $breakpoint-desktop; // start with the largest value for reducing later
+  $max-width : $breakpoint-mobile;  // start with the smallest value for increasing later
+
+  // scan all the devices given, use the smallest min-width and largest max-width
+  @for $i from 1 through length($media) {
+    $current-device : nth($media, $i);
+
+    // Display the css for the default device (any)
+    @if $current-device == "default" {
+      @content;
+    } @else {
+      // Or display the css for each given device using media Breakbpoints
+
+      @if ($current-device == "mobile") {
+        @if ($min-width > $mobile-min) { $min-width : $mobile-min; }
+        @if ($max-width < $mobile-max) { $max-width : $mobile-max; }
+      }
+
+      @else if ($current-device == "tablet") {
+        @if ($min-width > $tablet-min) { $min-width : $tablet-min; }
+        @if ($max-width < $tablet-max) { $max-width : $tablet-max; }
+      }
+
+      @else if ($current-device == "desktop") {
+        @if ($min-width > $desktop-min) { $min-width : $desktop-min; }
+        $max-width : $desktop-max;
+      }
+    }
+  }
+
+  // create a single media query
+  @if ($max-width == $desktop-max) {
+    // don't set a max width if highest-resolution device is targeted
+    @media (min-width: $min-width) { @content; }
+  } @else {
+    @media (min-width: $min-width) and (max-width: $max-width) { @content; }
+  }
+}

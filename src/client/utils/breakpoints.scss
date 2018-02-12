@@ -1,0 +1,7 @@
+@import 'vars';
+
+:export {
+  mobile: $int-breakpoint-mobile;
+  tablet: $int-breakpoint-tablet;
+  desktop: $int-breakpoint-desktop;
+}

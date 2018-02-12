@@ -1,0 +1,11 @@
+@import 'utils/index';
+
+.hello {
+  width: 100%;
+  margin: ($grid * 5) auto;
+  color: grey;
+  font-size: $font-size-s;
+  @include breakpoint(desktop) {
+    font-size: $font-size-xl;
+  }
+}
